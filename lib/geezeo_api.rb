@@ -20,14 +20,13 @@ class GeezeoApi
     fetch_transactions(user, account, page)
   end
 
-
   def fetch_transactions(user, account, page)
     url = "#{self.base_url}/users/#{user.id}/accounts/#{account.id}/transactions?page=#{page}"
     response = HTTParty.get(url, authentication).body
     response = JSON.parse(response)
     pages = response['pages']
     transactions = response['transactions'].map { |t| t['transaction'] }
-    [transactions, pages]
+    {:transactions => transactions, :pagination => pages}
   end
 
   def authentication
