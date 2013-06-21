@@ -1,0 +1,3 @@
+ACCOUNTS_HASH  = [{"id"=>4372076, "name"=>"eChecking", "balance"=>"300.54", "reference_id"=>"789274930", "aggregation_type"=>"partner", "state"=>"active", "harvest_updated_at"=>nil, "account_type"=>nil, "fi"=>nil},
+                  {"id"=>4372077, "name"=>"Complete Savings", "balance"=>"1000.0", "reference_id"=>"278914032", "aggregation_type"=>"partner", "state"=>"active", "harvest_updated_at"=>nil, "account_type"=>nil, "fi"=>nil}, 
+                  {"id"=>4372078, "name"=>"Preferred Plus Card", "balance"=>"769.88", "reference_id"=>"10984092", "aggregation_type"=>"partner", "state"=>"active", "harvest_updated_at"=>nil, "account_type"=>nil, "fi"=>nil}] 

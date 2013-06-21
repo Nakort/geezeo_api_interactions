@@ -1,0 +1,2 @@
+class Account < OpenStruct
+end
