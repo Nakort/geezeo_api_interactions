@@ -1,0 +1,38 @@
+<h2>
+  Transactions
+</h2>
+
+<table>
+  <thead>
+    <td>
+      Date
+    </td>
+    <td>
+      Description
+    </td>
+    <td>
+      Deposits/Credits
+    </td>
+    <td>
+      Withdrawals/Debits
+    </td>
+  </thead>
+  <tbody>
+    <% @account.transactions.each do |transaction| %>
+      <tr>
+        <td>
+          <%= transaction.posted_at %>
+        </td>
+        <td>
+          <%= transaction.name%>
+        </td>
+        <td>
+          <%= transaction.balance %>
+        </td>
+        <td>
+          <%= transaction.balance %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

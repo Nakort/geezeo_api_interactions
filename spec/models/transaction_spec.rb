@@ -9,4 +9,26 @@ describe Transaction do
       transaction.id.should == attr["id"]
     end
   end
+
+  context "credit?" do
+    it "returns true for transactions with type Credit" do
+      t = Transaction.new(:transaction_type => "Credit")
+      t.credit?.should be_true
+    end
+    it "returns false for transactions with type Debit" do
+      t = Transaction.new(:transaction_type => "Debit")
+      t.credit?.should be_false
+    end
+  end
+
+  context "debit?" do
+    it "returns true for transactions with type Debit" do
+      t = Transaction.new(:transaction_type => "Debit")
+      t.debit?.should be_true
+    end
+    it "returns false for transactions with type Credit" do
+      t = Transaction.new(:transaction_type => "Credit")
+      t.debit?.should be_false
+    end
+  end
 end
