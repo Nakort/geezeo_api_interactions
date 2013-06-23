@@ -10,5 +10,6 @@ feature 'Accounts' do
       page.should have_content(account["name"])
       page.should have_content(account["balance"])
     end
+    page.should have_content("2070.42")
   end
 end

@@ -24,4 +24,10 @@ describe User do
       user.find_account("some-random").should be_nil
     end
   end
+
+  context "total_balance" do
+    it "returns the total balance of all accounts" do
+      user.total_balance.should == 2070.42
+    end
+  end
 end

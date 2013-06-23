@@ -12,6 +12,10 @@ class User
     accounts.find{|account| account.id == id}
   end
 
+  def total_balance
+    accounts.inject(0.0){|total, account| total + account.balance}
+  end
+
   private
 
   def geezeo_api
