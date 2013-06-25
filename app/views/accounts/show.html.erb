@@ -1,38 +1,39 @@
 <h2>
-  Transactions
+  Transactions for
+  <div class="btn-group">
+    <%= link_to @account.name, account_path(@account), :class=> "btn btn-primary" %>
+    <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <% @accounts.each do |account|%>
+        <li><%= link_to account.name, account_path(account) %></li>
+      <% end %>
+    </ul>
+  </div>
 </h2>
 
-<table>
-  <thead>
-    <td>
-      Date
-    </td>
-    <td>
-      Description
-    </td>
-    <td>
-      Deposits/Credits
-    </td>
-    <td>
-      Withdrawals/Debits
-    </td>
-  </thead>
-  <tbody>
-    <% @account.transactions.each do |transaction| %>
-      <tr>
+
+<div class="row">
+  <div class="span7">
+    <table class="table">
+      <thead>
         <td>
-          <%= transaction.posted_at %>
+          Date
         </td>
         <td>
-          <%= transaction.name%>
+          Description
         </td>
         <td>
-          <%= transaction.balance %>
+          Deposits/Credits
         </td>
         <td>
-          <%= transaction.balance %>
+          Withdrawals/Debits
         </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+        <% @account.transactions.each do |transaction| %>
+          <%= render "#{transaction.transaction_type.downcase}_transaction", :transaction => transaction %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

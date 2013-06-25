@@ -12,6 +12,11 @@ describe AccountsController do
       @account = @user.accounts.first
     end
 
+    it "doesn't assign the requested account to @accounts" do
+      get :show, id: @account.id
+      assigns(:accounts).should_not include(@account)
+    end
+
     it "assigns the requested account to @account" do
       get :show, id: @account.id
       assigns(:account).should == @account

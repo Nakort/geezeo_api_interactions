@@ -8,4 +8,8 @@ class Transaction < OpenStruct
     transaction_type == "Credit"
   end
 
+
+  def date
+    Time.parse(self.posted_at).strftime("%m-%d-%Y")
+  end
 end

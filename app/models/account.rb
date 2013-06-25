@@ -20,6 +20,10 @@ class Account
     @balance = Float(attr)
   end
 
+  def to_param
+    self.id
+  end
+
   private
 
   def geezeo_api

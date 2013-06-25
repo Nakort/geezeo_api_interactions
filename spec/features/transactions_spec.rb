@@ -8,7 +8,7 @@ feature 'Transactions' do
     visit account_path(user.accounts.first.id)
     page.should have_content('Transactions')
     TRANSACTIONS_HASH[:transactions].each do |transaction|
-      page.should have_content(transaction["name"])
+      page.should have_content(transaction["memo"])
       page.should have_content(transaction["balance"])
     end
   end
