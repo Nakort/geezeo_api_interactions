@@ -4,8 +4,8 @@ This is a rails app that interacts with the Geezeo API to render the user accoun
 
 ## Accounts 
 
-![Accounts](https://www.dropbox.com/s/xgdtzrru63rd7fc/accounts_page.png)
+![Accounts image](https://dl.dropboxusercontent.com/u/3884754/accounts_page.png)
 
 ## Transactions
 
-![Transactions](https://www.dropbox.com/s/p3ycvilq5m877c2/transactions_page.png)
+![Transactions image](https://dl.dropboxusercontent.com/u/3884754/transactions_page.png)
