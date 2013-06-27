@@ -7,6 +7,17 @@ describe AccountsController do
     controller.stub(:current_user).and_return(@user)
   end
 
+  context "transactions" do
+    before :each do
+      @account = @user.accounts.first
+    end
+
+    it "returns a csv file" do
+      get :transactions, :id => @account.id
+      response.header['Content-Type'].should include('text/csv; charset=utf-8; header=present')
+    end
+  end
+
   context "show" do
     before :each do
       @account = @user.accounts.first

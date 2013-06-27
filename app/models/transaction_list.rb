@@ -15,4 +15,13 @@ class TransactionList
     @transactions.each &block
   end
 
+  def to_csv
+    CSV.generate do |csv|
+      cols = ["id", "transaction_type", "balance", "memo"]
+      csv << cols
+      self.each do |tr|                
+        csv << [tr.id, tr.transaction_type, tr.balance, tr.memo]
+      end
+    end
+  end
 end
