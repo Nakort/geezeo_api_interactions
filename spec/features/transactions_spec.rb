@@ -4,8 +4,9 @@ require_relative "../fixtures/transactions_hash.rb"
 
 feature 'Transactions' do
 
+  let(:user) {User.new}
+
   before :each do
-    user = User.new
     visit account_path(user.accounts.first.id)
   end
 
@@ -27,6 +28,6 @@ feature 'Transactions' do
   scenario "csv file of latest transactions" do
     page.should have_content('Transactions')
     click_link "Download CSV"
-    page.body.should == user.accounts.first.transactions.to_csv
+    page.body.should == user.accounts.first.all_transactions.to_csv
   end
 end

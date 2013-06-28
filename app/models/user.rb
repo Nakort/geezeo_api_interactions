@@ -1,9 +1,5 @@
 class User
 
-  def initialize
-    @transactions = []
-  end
-
   def id
     "nakort"
   end
@@ -20,12 +16,8 @@ class User
     accounts.inject(0.0){|total, account| total + account.balance}
   end
 
-  def transactions(page=1)
+  def transactions
     @transactions ||= TransactionList.new(geezeo_api.transactions_for_user(self))
-  end
-
-  def parallel_transactions
-    @transactions ||= TransactionList.new(geezeo_api.parallel_transactions_for_user(self))
   end
 
   private

@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
 
   def transactions
     account = current_user.find_account(params[:id].to_i)
-    send_data(account.transactions.to_csv, 
+    send_data(account.all_transactions.to_csv, 
               :type => 'text/csv; charset=utf-8; header=present', 
               :filename => "transactions-#{Time.now.to_date.to_s}.csv")
   end

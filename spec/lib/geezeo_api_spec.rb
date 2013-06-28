@@ -13,9 +13,26 @@ describe GeezeoApi do
   end
 
   context "transactions for accounts" do
+
     it "returns an array of transactions and the pagination info" do
       GeezeoApi.new(AppConfig[:api_key]).transactions_for_user_account(stub(:id => "nakort"), stub(:id => 4372076)).should == TRANSACTIONS_HASH
     end
 
+  end
+  
+  context "all transactions for accounts" do
+
+    it "returns an array of all transactions and empty pagination info" do
+      GeezeoApi.new(AppConfig[:api_key]).all_transactions_for_user_account(stub(:id => "nakort"), stub(:id => 4372076))[:transactions].count.should == 34
+    end
+  
+  end
+
+  context "all transactions for user" do
+  
+    it "returns an array of all transactions and empty pagination info" do
+      GeezeoApi.new(AppConfig[:api_key]).transactions_for_user(User.new)[:transactions].count.should == 102
+    end
+  
   end
 end
