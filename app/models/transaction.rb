@@ -9,10 +9,18 @@ class Transaction < OpenStruct
   end
 
   def <=>(transaction)
-    self.date <=> transaction.date
+    val = self.time <=> transaction.time
+    if val == 0
+      val = self.memo <=> transaction.memo
+    end
+    val
   end
 
   def date
-    Time.parse(self.posted_at).strftime("%m-%d-%Y")
+    time.strftime("%m-%d-%Y")
+  end
+
+  def time
+    Time.parse(self.posted_at)
   end
 end

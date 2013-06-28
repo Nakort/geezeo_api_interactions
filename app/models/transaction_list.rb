@@ -1,6 +1,7 @@
 class TransactionList
 
   include Enumerable
+
   attr_reader :current_page, :total_pages
 
   def initialize(attrs)
