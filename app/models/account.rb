@@ -6,14 +6,15 @@ class Account
 
   def initialize(attrs={})
     attrs.each{|k,v| send("#{k}=",v)}
+    @transactions = []
   end
 
   def ==(other_account)
     other_account.id == self.id
   end
 
-  def transactions
-    @transactions ||= TransactionList.new(geezeo_api.transactions_for_user_account(self.user, self))
+  def transactions(page=1)
+    @transactions[page] ||= TransactionList.new(geezeo_api.transactions_for_user_account(self.user, self, page))
   end
 
   def balance=(attr)
@@ -22,6 +23,10 @@ class Account
 
   def to_param
     self.id
+  end
+
+  def all_transactions
+    TransactionList.new(geezeo_api.all_transactions_for_user_account(self.user, self))
   end
 
   private

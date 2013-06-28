@@ -28,6 +28,11 @@ describe AccountsController do
       assigns(:accounts).should_not include(@account)
     end
 
+    it "assigns the requested accounts transactions to @transactions" do
+      get :show, id: @account.id
+      assigns(:transactions).should == @account.transactions
+    end
+
     it "assigns the requested account to @account" do
       get :show, id: @account.id
       assigns(:account).should == @account

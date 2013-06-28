@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
 
   def show
     @account = current_user.find_account(params[:id].to_i)
+    @transactions = @account.transactions(params.fetch(:page, 1).to_i)
     @accounts = current_user.accounts
     @accounts.delete(@account)
   end

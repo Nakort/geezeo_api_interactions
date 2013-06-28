@@ -6,9 +6,9 @@ class TransactionList
   def initialize(attrs)
     transactions = attrs[:transactions]
     pagination = attrs[:pagination]
-    @transactions = transactions.map{|t| Transaction.new(t)}
-    @current_page = pagination["current_page"]
-    @total_pages = pagination["total_pages"]
+    @transactions = transactions.map{|t| Transaction.new(t)}.sort.reverse
+    @current_page = pagination["current_page"].to_i
+    @total_pages = pagination["total_pages"].to_i
   end
 
   def each &block
@@ -24,4 +24,5 @@ class TransactionList
       end
     end
   end
+
 end

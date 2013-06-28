@@ -30,11 +30,21 @@
         </td>
       </thead>
       <tbody>
-        <% @account.transactions.each do |transaction| %>
+        <% @transactions.each do |transaction| %>
           <%= render "#{transaction.transaction_type.downcase}_transaction", :transaction => transaction %>
         <% end %>
       </tbody>
     </table>
+    <div class="pagination">
+      <ul>
+        <% @transactions.total_pages.times do |i| %>
+          <% i = i + 1 %>
+          <li class="<%= @transactions.current_page == i ? 'active' : '' %>">
+            <%= link_to i.to_s, account_path(@account, :page => i) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
     <%= link_to "Download CSV", transactions_account_path(@account) %>
   </div>
 </div>
